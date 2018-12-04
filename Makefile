@@ -658,6 +658,8 @@ LDFINAL_vmlinux := $(LD)
 ifeq ($(ld-name), gold)
 LD		:= $(LDGOLD)
 LDFLAGS		+= -plugin LLVMgold.so
+LDFLAGS		+= -plugin-opt=-function-sections
+LDFLAGS		+= -plugin-opt=-data-sections
 endif
 # use llvm-ar for building symbol tables from IR files, and llvm-dis instead
 # of objdump for processing symbol versions and exports
