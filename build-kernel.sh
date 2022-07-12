@@ -71,7 +71,7 @@ function error_sticker() {
 }
 function clone_tc() {
 [ -d ${TC_PATH} ] || mkdir ${TC_PATH}
-git clone -b 14.x.x --depth=1 https://gitlab.com/GhostMaster69-dev/llvm-clang.git ${TC_PATH}
+git clone -b master --depth=1 https://gitlab.com/GhostMaster69-dev/llvm-clang.git ${TC_PATH}
 PATH="${TC_PATH}/bin:$PATH"
 export COMPILER="Cosmic clang version 14.x.x, LLD 14.x.x"
 }
@@ -81,8 +81,6 @@ build_kernel() {
 DATE=`date`
 BUILD_START=$(date +"%s")
 make "$CONFIG" && make LLVM=1 \
-	CROSS_COMPILE=aarch64-linux-gnu- \
-	CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 	-j$(nproc --all) |& tee -a $HOME/build/build${BUILD}.txt
 BUILD_END=$(date +"%s")
 DIFF=$(($BUILD_END - $BUILD_START))
