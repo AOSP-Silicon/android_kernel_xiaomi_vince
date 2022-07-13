@@ -372,6 +372,9 @@ READELF		= $(CROSS_COMPILE)readelf
 OBJSIZE		= $(CROSS_COMPILE)size
 STRIP		= $(CROSS_COMPILE)strip
 endif
+ifeq ($(cc-name),clang)
+LD              = ld.lld
+endif
 AWK		= awk
 GENKSYMS	= scripts/genksyms/genksyms
 INSTALLKERNEL  := installkernel
